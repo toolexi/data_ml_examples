@@ -20,7 +20,7 @@ jobs:
             if (labels.lenght === 0) {
               core.setFailed("Label is required to merge this pull request")
             } else {
-              label.forEach(label => {
+              labels.forEach(label => {
                 console.log(`Label "${label.name}" is added to the PR.`);
               });
             }
