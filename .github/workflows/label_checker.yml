@@ -1,0 +1,26 @@
+name: PR_label_mandator
+
+on:
+  pull_request:
+    branches: [ "main" ]
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check for the label
+        uses: actions/github-script@v5
+        
+        with:
+          script: |
+            const labels = context.payload.pull_request.labels;
+            if (labels.lenght === 0) {
+              core.setFailed("Label is required to merge this pull request")
+            } else {
+              labels.forEach(label => {
+                console.log(`Label "${label.name}" is added to the PR.`);
+              });
+            }
