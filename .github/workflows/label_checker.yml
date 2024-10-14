@@ -11,13 +11,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
-
       - name: Check for the label
-        if: >
-          contains(github.event.pull_request.labels.*.name, 'bug') == false && 
-          contains(github.event.pull_request.labels.*.name, 'documentation') == false && 
-          contains(github.event.pull_request.labels.*.name, 'enhancement') == false &&
-          contains(github.event.pull_request.labels.*.name, 'newlabel1') == false &&
-          contains(github.event.pull_request.labels.*.name, 'newlabel2') == false
-        run: exit 1
+        uses: actions/github-script@v5
+        
+        with:
+          script: |
+            const labels = context.payload.pull_request.labels;
+            if (labels.lenght === 0) {
+              core.setFailed("Label is required to merge this pull request")
+            } else {
+              label.forEach(label => {
+                console.log(`Label "${label.name}" is added to the PR.`);
+              });
+            }
