@@ -24,6 +24,4 @@ jobs:
         run: pip install flake8
 
       - name: Run linters
-        uses: wearerequired/lint-action@v2
-        with:
-          flake8: true
+        run: flake8 .
