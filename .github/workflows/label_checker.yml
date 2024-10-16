@@ -17,7 +17,7 @@ jobs:
         with:
           script: |
             const labels = context.payload.pull_request.labels;
-            if (labels.lenght === 0) {
+            if (labels.length === 0) {
               core.setFailed("Label is required to merge this pull request")
             } else {
               labels.forEach(label => {
