@@ -27,4 +27,4 @@ jobs:
         run: flake8 .
 
       - name: Run formatter
-        run: black check .
+        run: black --check .
