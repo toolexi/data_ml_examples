@@ -21,12 +21,10 @@ jobs:
           python-version: 3.9
 
       - name: Install flake8 and black
-        run: |
-          uv_path=$(which uv)
-          $uv_path add flake8 black
-
-      - name: Run formatter
-        run: black --check .
+        run: pip install flake8 black
 
       - name: Run linters
         run: flake8 .
+
+      - name: Run formatter
+        run: black --check .
