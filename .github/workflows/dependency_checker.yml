@@ -24,10 +24,13 @@ jobs:
       - name: Install dependencies
         run: |
           curl -LsSf https://astral.sh/uv/install.sh | sh
-          uv sync --python 3.10.16
+          uv_path=$(which uv)
+          $uv_path sync --python 3.10.16
   
       - name: Install pip-audit
-        run: uv add pip-audit
+        run: |
+          uv_path=$(which uv)
+          $uv_path add pip-audit
   
       - name: Run pip-audit
         run: pip-audit
