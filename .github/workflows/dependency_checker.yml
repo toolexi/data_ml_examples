@@ -27,7 +27,7 @@ jobs:
           uv sync --python 3.10.16
   
       - name: Install pip-audit
-        run: pip install pip-audit
+        run: uv add pip-audit
   
       - name: Run pip-audit
         run: pip-audit

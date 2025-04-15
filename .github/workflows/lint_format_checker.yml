@@ -21,10 +21,10 @@ jobs:
           python-version: 3.9
 
       - name: Install flake8 and black
-        run: pip install flake8 black
-
-      - name: Run linters
-        run: flake8 .
+        run: uv add flake8 black
 
       - name: Run formatter
         run: black --check .
+
+      - name: Run linters
+        run: flake8 .
